@@ -17,7 +17,7 @@ void dfs(int node, vector<vector<int>> &adj, vector<int> &vis, stack<int> &s)
 
 vector<int> topoDfs(vector<vector<int>> adj, int n) 
 {
-    vector<int> vis(n+1, 0);
+    vector<int> vis(n, 0);
     stack<int> s;
     for(int i=0; i<n; i++) 
     {
