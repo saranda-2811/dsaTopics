@@ -56,6 +56,6 @@ int main()
         adj[v].push_back(u);
     }
    
-    shortesBfs(n, 0, adj);
+    shortestBfs(n, 0, adj);
     return 0;
 }
