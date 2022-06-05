@@ -3,7 +3,7 @@
 problem link : https://leetcode.com/problems/find-if-path-exists-in-graph/
 
 */
-
+//Anurag's code
 class Solution {
 public:
     vector<vector<int>>adj;
@@ -40,6 +40,41 @@ public:
                 
             }
         }
+        return false;
+    }
+};
+
+
+
+
+//Saranda's code
+class Solution {
+public:
+    void dfs(int i, vector<vector<int>> &adj, vector<bool> &vis, int dest) {
+        vis[i]=true;
+        
+        for(auto it: adj[i]) {
+            if(vis[dest]==true)
+                return;
+            if(!vis[it]) {
+                dfs(it, adj, vis, dest);
+            }
+        } 
+    }
+    
+    bool validPath(int n, vector<vector<int>>& edges, int source, int destination) {
+        if(n==1) return true;
+        vector<bool> vis(n, false);
+        vector<vector<int>> adj(n);
+        
+        for(int i=0; i<edges.size(); i++) {
+            adj[edges[i][0]].push_back(edges[i][1]);
+            adj[edges[i][1]].push_back(edges[i][0]);
+        }
+        
+        dfs(source, adj, vis, destination);
+        if(vis[destination]==true)
+            return true;
         return false;
     }
 };
