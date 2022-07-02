@@ -31,3 +31,31 @@ void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
             nums1[i] = nums2[c++];
         }
     }
+
+
+//GAP METHOD
+
+void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        
+        int c=0;
+        for(int i=m; i<m+n; i++)
+            nums1[i] = nums2[c++];
+        
+        int gap=ceil((float)(m+n)/2), p1, p2;
+        while(gap>0)
+        {
+            p1 = 0;
+            p2 = gap;
+            while(p2<m+n)
+            {
+                if(nums1[p1]>nums1[p2])
+                    swap(nums1[p1], nums1[p2]);
+                p1++;
+                p2++;
+            }
+            if(gap==1)
+                gap=0;
+            else
+                gap = ceil((float)gap/2);
+        }
+    }
